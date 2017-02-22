@@ -1,0 +1,50 @@
+{
+  "author": "Florian Wendelborn <dodekeract@users.noreply.github.com>",
+  "babel": {
+    "presets": [
+      [
+        "env",
+        {
+          "targets": {
+            "node": "current"
+          }
+        }
+      ],
+      "stage-3"
+    ]
+  },
+  "dependencies": {
+    "bulma": "^0.3.1",
+    "hyperapp": "^0.5.0",
+    "postcss-loader": "^1.3.1",
+    "superagent": "^3.4.4"
+  },
+  "devDependencies": {
+    "autoprefixer": "^6.7.4",
+    "babel-cli": "^6.23.0",
+    "babel-loader": "^6.3.2",
+    "babel-plugin-transform-react-jsx": "^6.23.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-es2015": "^6.22.0",
+    "babel-preset-stage-3": "^6.22.0",
+    "css-loader": "^0.26.1",
+    "node-sass": "^4.5.0",
+    "nodemon": "^1.11.0",
+    "sass-loader": "^6.0.2",
+    "style-loader": "^0.13.1",
+    "webpack": "^2.2.1"
+  },
+  "license": "MIT",
+  "main": "index.js",
+  "name": "smartflat-web-ui",
+  "repository": "https://dodekeract@github.com/smartflat/smartflat-web-ui.git",
+  "scripts": {
+    "build": "yarn run build-clean && yarn run build-copy && yarn run build-transpile && yarn run build-webpack",
+    "build-copy": "cp -r source/images build/images && cp source/client/index.html build/client/index.html",
+    "build-clean": "rm -rf build/ && mkdir -p build/client",
+    "build-transpile": "babel source/info.js --out-file build/info.js",
+    "build-webpack": "webpack",
+    "watch": "nodemon --watch source --watch webpack.config.js --watch package.json -e js,jsx,html,sass,css,svg,png,css --exec \"yarn run build\""
+  },
+  "version": "0.0.0"
+}
