@@ -7,6 +7,10 @@
 
 <img src="https://raw.githubusercontent.com/smartflat/smartflat/master/source/images/logo.png" alt="SmartFlat Logo" height="128" width="128">
 
+## Installation
+
+See [SmartFlat module installation-guide](https://github.com/smartflat/smartflat/tree/master/documentation/modules/installation-guide.md).
+
 ## For Developers
 
 Requires: git, [yarn](https://yarnpkg.com) and [node.js](https://nodejs.org).
@@ -19,4 +23,4 @@ yarn run build
 
 ## License
 
-SmartFlat Web UI is released under [the MIT license](/license.md).
+SmartFlat Web UI is [MIT-licensed](/license.md).
