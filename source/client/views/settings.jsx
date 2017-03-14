@@ -9,46 +9,40 @@ import Footer from '../components/footer'
 
 // endregion
 
-// region ViewMain
+// region ViewSettings
 
 export default (model, actions) =>
 	<div>
 		<Header actions={actions} model={model}/>
 		<div class="container">
-			<div class="columns" style={{margin: 0}}>
-				<div class="is-one-quarter">
+			<div class="columns">
+				<div class="column is-one-quarter">
 					<aside class="menu">
 						<p class="menu-label">
 							General
 						</p>
 						<ul class="menu-list">
-							<li><a class="is-active">Information</a></li>
-							<li><a>Customers</a></li>
+							<li><a class="is-active">Server</a></li>
 						</ul>
 						<p class="menu-label">
-							Administration
+							Devices
+						</p>
+						<ul class="menu-list">
+							<li><a>Add Device</a></li>
+							<li><a>Show Devices</a></li>
+						</ul>
+						<p class="menu-label">
+							Users
 						</p>
 						<ul class="menu-list">
 							<li><a>Users</a></li>
-							<li>
-								<a>Manage Users</a>
-								<ul>
-									<li><a>Members</a></li>
-									<li><a>Plugins</a></li>
-									<li><a>Add a member</a></li>
-								</ul>
-							</li>
-							<li><a>Invitations</a></li>
-							<li><a>Cloud Storage Environment Settings</a></li>
-							<li><a>Authentication</a></li>
+							<li><a>Manage Users</a></li>
 						</ul>
 						<p class="menu-label">
 							Modules
 						</p>
 						<ul class="menu-list">
 							<li><a>Installed</a></li>
-							<li><a>Transfers</a></li>
-							<li><a>Balance</a></li>
 						</ul>
 					</aside>
 				</div>
