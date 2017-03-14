@@ -18,25 +18,42 @@ import './sign-in.sass'
 export default (model, actions) =>
 	<section class="hero is-fullheight">
 		<div class="hero-head">
-			<Header/>
+			<Header actions={actions} model={model}/>
 		</div>
 		<div class="hero-body">
 			<div class="container has-text-centered">
+				{model.session.error &&
+					<div>
+						{model.session.error}
+					</div>
+				}
 				<div style={{maxWidth: '512px', margin: '0 auto'}}>
 					<p class="control has-icon">
-						<input class="input" type="text" placeholder="Username"/>
+						<input
+							class="input"
+							onInput={e => actions.session.input.name(e.target.value)}
+							placeholder="Username"
+							type="text"
+							value={model.session.input.name}
+						/>
 						<span class="icon is-small">
 							<i class="fa fa-user"></i>
 						</span>
 					</p>
 					<p class="control has-icon">
-					<input class="input" type="password" placeholder="Password"/>
+						<input
+							class="input"
+							onInput={e => actions.session.input.password(e.target.value)}
+							placeholder="Password"
+							type="password"
+							value={model.session.input.password}
+						/>
 						<span class="icon is-small">
 							<i class="fa fa-lock"></i>
 						</span>
 					</p>
 					<p class="control">
-						<button onclick={actions.signIn} class="button is-success">
+						<button onclick={actions.session.signIn} class="button is-success">
 							Sign in
 						</button>
 					</p>
@@ -44,7 +61,7 @@ export default (model, actions) =>
 			</div>
 		</div>
 		<div class="hero-foot">
-			<Footer/>
+			<Footer actions={actions} model={model}/>
 		</div>
 	</section>
 
