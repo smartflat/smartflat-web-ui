@@ -4,9 +4,8 @@ import request from 'superagent'
 
 // endregion
 
-// region effects
-
 export default {
+	// region session
 	session: {
 		check: async (model, _, actions) => {
 			try {
@@ -62,10 +61,30 @@ export default {
 					name,
 					ready: true
 				})
-				actions.router.go('/m/web-ui/')
+				actions.router.go('/m/web-ui/devices')
 			} catch (error) {
 				actions.session.set({
 					error: 'Could Not Sign In'
+				})
+			}
+		},
+		signOut: async (model, data, actions) => {
+			try {
+				const response = await request
+					.delete('/m/web-api/v1/session')
+				actions.session.set({
+					error: '',
+					input: {
+						name: '',
+						password: ''
+					},
+					name: '',
+					ready: false
+				})
+				actions.router.go('/m/web-ui/sign-in')
+			} catch (error) {
+				actions.session.set({
+					error: 'Could Not Sign Out'
 				})
 			}
 		},
@@ -75,7 +94,17 @@ export default {
 				...data
 			}
 		})
-	}
-}
+	},
+	// endregion
 
-// endregion
+	// region ui
+	ui: {
+		toggleMenu: model => ({
+			ui: {
+				...model.ui,
+				toggleMenu: !model.ui.toggleMenu
+			}
+		})
+	}
+	// endregion
+}
